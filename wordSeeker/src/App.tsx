@@ -1,5 +1,11 @@
+import { Typography } from '@mui/material'
+
 function App() {
-  return <>wordSeeker initial</>
+  return (
+    <>
+      <Typography variant="h1">wordSeeker</Typography>
+    </>
+  )
 }
 
 export default App
