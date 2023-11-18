@@ -1,18 +1,47 @@
 module.exports = {
-  root: true,
-  env: { browser: true, es2020: true },
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react-hooks/recommended',
-  ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
-  parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh'],
+  env: {
+    browser: true,
+    es2021: true,
+  },
+  extends: ['plugin:react/jsx-runtime', 'standard-with-typescript', 'airbnb-typescript', 'airbnb/hooks', 'prettier'],
+  overrides: [],
+  ignorePatterns: ['vite*.ts', '**/node_modules/*', '*.cjs', '**/lib/*', 'testSetup.ts', 'coverage/**/*'],
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: './tsconfig.json',
+    tsconfigRootDir: __dirname,
+  },
+  plugins: ['prettier', 'eslint-plugin-tsdoc'],
   rules: {
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
+    'tsdoc/syntax': 'warn',
+    'prettier/prettier': 'warn',
+    'react-hooks/exhaustive-deps': 'off',
+    '@typescript-eslint/no-confusing-void-expression': [
+      'error',
+      {
+        ignoreArrowShorthand: true,
+      },
+    ],
+    '@typescript-eslint/no-misused-promises': [
+      2,
+      {
+        checksVoidReturn: {
+          attributes: false,
+        },
+      },
+    ],
+    '@typescript-eslint/consistent-type-imports': [
+      'error',
+      {
+        disallowTypeAnnotations: false,
+      },
+    ],
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: ['**/*{test,spec}.{js,jsx,ts,tsx}', '**/testSetup.{ts,tsx}', '**/TestUtils.{ts,tsx}'],
+      },
     ],
   },
 }

@@ -1,10 +1,5 @@
 function App() {
-
-  return (
-    <>
-      wordSeeker initial
-    </>
-  )
+  return <>wordSeeker initial</>
 }
 
 export default App
