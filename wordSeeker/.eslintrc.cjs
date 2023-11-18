@@ -14,6 +14,7 @@ module.exports = {
   },
   plugins: ['prettier', 'eslint-plugin-tsdoc'],
   rules: {
+    '@typescript-eslint/explicit-function-return-type': 'warn',
     'tsdoc/syntax': 'warn',
     'prettier/prettier': 'warn',
     'react-hooks/exhaustive-deps': 'off',

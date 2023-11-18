@@ -1,14 +1,14 @@
 import { FormControlLabel, FormGroup, Switch, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
 
-export default function App() {
+export default function App(): JSX.Element {
   type Mode = 'light' | 'dark'
   const [mode, setMode] = useState<Mode>(() => {
     return (localStorage.getItem('theme') as Mode) ?? 'light'
   })
   const [checked, setChecked] = useState<boolean>(true)
   useEffect(() => {
-    if (mode == 'light') {
+    if (mode === 'light') {
       setChecked(true)
     } else {
       setChecked(false)
@@ -22,8 +22,8 @@ export default function App() {
         <FormControlLabel
           control={<Switch checked={checked} />}
           label={`Currently using ${mode} mode`}
-          onChange={(_, checked) => {
-            if (checked) setMode('light')
+          onChange={(_, chk) => {
+            if (chk) setMode('light')
             else setMode('dark')
           }}
         />

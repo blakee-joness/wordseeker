@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "eslint-plugin-react": "^7.33.2"
+  },
+  "devDependencies": {
+    "eslint-config-standard-with-typescript": "^39.1.1"
+  }
+}
