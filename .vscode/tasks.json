@@ -32,5 +32,13 @@
             "command": "echo ${input:terminate}",
             "type": "shell"
           },
+    ],
+    "inputs": [
+      {
+        "id": "terminate",
+        "type": "command",
+        "command": "workbench.action.tasks.terminate",
+        "args": "terminateAll"
+      }
     ]
   }
