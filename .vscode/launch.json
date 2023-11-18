@@ -1,0 +1,18 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Start React",
+            "type": "chrome",
+            "request": "launch",
+            "skipFiles": ["${workspaceFolder}/wordSeeker/node_modules/**/*.js"],
+            "preLaunchTask": "npm: dev",
+            "postDebugTask": "stop all",
+            "url": "http://localhost:5173",
+            "webRoot": "${workspaceFolder}/wordSeeker"
+          },
+    ],
+  }
