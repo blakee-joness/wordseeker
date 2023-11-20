@@ -1,4 +1,4 @@
-import { darkTheme, lightTheme } from '@Theme/themes'
+import { darkTheme } from '@Theme/themes'
 import { ThemeProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
 import { Suspense } from 'react'
