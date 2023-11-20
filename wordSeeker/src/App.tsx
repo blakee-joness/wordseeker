@@ -1,11 +1,17 @@
-import { Typography } from '@mui/material'
+import Footer from '@Components/Footer'
+import Header from '@Components/Header'
+import ContainerGrid from '@Pages/ContainerGrid'
+import PaletteTest from '@Pages/PaletteTest'
+import ContextProvider from '@Providers/ContextProvider'
 
-function App() {
+export default function App(): JSX.Element {
   return (
-    <>
-      <Typography variant="h1">wordSeeker</Typography>
-    </>
+    <ContextProvider>
+      <Header />
+      <ContainerGrid>
+        <PaletteTest />
+      </ContainerGrid>
+      <Footer />
+    </ContextProvider>
   )
 }
-
-export default App
