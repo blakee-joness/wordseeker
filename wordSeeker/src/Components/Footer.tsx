@@ -10,7 +10,7 @@ export default function Footer(): JSX.Element {
           Created by{' '}
           <Link
             target="none"
-            href="https://github.com/blakee-joness"
+            href="https://github.com/blakee-joness/"
             sx={{ color: theme.palette.common.white, fontWeight: 'bold' }}
           >
             @blakee-joness
