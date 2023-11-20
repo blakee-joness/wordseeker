@@ -29,12 +29,8 @@ export default function Footer(): JSX.Element {
           </Link>
           {` • ${new Date().getFullYear()}`}
           {` • Toggle Theme`}
-          <IconButton color="primary" onClick={toggleTheme}>
-            {isDarkMode ? (
-              <Brightness5Outlined sx={{ color: theme.palette.primary.light }} />
-            ) : (
-              <Brightness4 sx={{ color: theme.palette.primary.dark }} />
-            )}
+          <IconButton color="primary" onClick={toggleTheme} sx={{ color: theme.palette.primary.light }}>
+            {isDarkMode ? <Brightness5Outlined /> : <Brightness4 />}
           </IconButton>
         </Typography>
       </Container>
