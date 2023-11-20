@@ -1,11 +1,15 @@
-import { Box, Container, Link, Typography, useTheme } from '@mui/material'
+import { Box, Container, IconButton, Link, Typography, useTheme } from '@mui/material'
 import GitHubIcon from '@mui/icons-material/GitHub'
+import { useContext, useEffect } from 'react'
+import { ThemeModeContext } from '@Providers/ContextProvider'
+import { Brightness4, Brightness5Outlined } from '@mui/icons-material'
+import { darkTheme, lightTheme } from '@Theme/themes'
 
 export default function Footer(): JSX.Element {
+  const { isDarkMode, toggleTheme } = useContext(ThemeModeContext)
   const theme = useTheme()
-
   return (
-    <Box sx={{ bgcolor: 'primary.light', p: 2, position: 'fixed', bottom: 0, width: '100%' }}>
+    <Box sx={{ bgcolor: 'primary.main', p: 2, position: 'fixed', bottom: 0, width: '100%' }}>
       <Container maxWidth="sm" sx={{ color: theme.palette.common.white }}>
         <Typography variant="body2" align="center">
           {'Created by '}
@@ -25,6 +29,14 @@ export default function Footer(): JSX.Element {
             GitHub <GitHubIcon fontSize="small" />
           </Link>
           {` • ${new Date().getFullYear()}`}
+          {` • Toggle Theme`}
+          <IconButton color="primary" onClick={toggleTheme}>
+            {isDarkMode ? (
+              <Brightness5Outlined sx={{ color: theme.palette.primary.light }} />
+            ) : (
+              <Brightness4 sx={{ color: theme.palette.primary.dark }} />
+            )}
+          </IconButton>
         </Typography>
       </Container>
     </Box>
