@@ -1,5 +1,6 @@
 import { lightTheme } from '@Theme/themes'
-import { CssBaseline, ThemeProvider } from '@mui/material'
+import { ThemeProvider } from '@mui/material/styles'
+import { CssBaseline } from '@mui/material'
 import { Suspense } from 'react'
 
 export default function ContextProvider({ children }: { children?: JSX.Element | JSX.Element[] }): JSX.Element {
