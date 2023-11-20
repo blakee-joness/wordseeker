@@ -1,9 +1,8 @@
 import { Box, Container, IconButton, Link, Typography, useTheme } from '@mui/material'
 import GitHubIcon from '@mui/icons-material/GitHub'
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { ThemeModeContext } from '@Providers/ContextProvider'
 import { Brightness4, Brightness5Outlined } from '@mui/icons-material'
-import { darkTheme, lightTheme } from '@Theme/themes'
 
 export default function Footer(): JSX.Element {
   const { isDarkMode, toggleTheme } = useContext(ThemeModeContext)
