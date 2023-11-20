@@ -1,5 +1,5 @@
 import { darkTheme, lightTheme } from '@Theme/themes'
-import { ThemeProvider, useTheme } from '@mui/material/styles'
+import { ThemeProvider } from '@mui/material/styles'
 import { CssBaseline, useMediaQuery } from '@mui/material'
 import { Suspense, createContext, useState } from 'react'
 
