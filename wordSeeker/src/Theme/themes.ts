@@ -17,13 +17,13 @@ export const lightTheme = createTheme({
 export const darkTheme = createTheme({
   palette: {
     primary: {
-      main: '#000a71',
+      main: '#252462',
     },
     secondary: {
-      main: '#0006be',
+      main: '#0e9e8d',
     },
     error: {
-      main: '#000228',
+      main: '#7c0000',
     },
     background: {
       default: '#b0b0b0',
