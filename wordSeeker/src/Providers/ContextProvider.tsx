@@ -1,6 +1,6 @@
 import { darkTheme, lightTheme } from '@Theme/themes'
 import { ThemeProvider, useTheme } from '@mui/material/styles'
-import { CssBaseline } from '@mui/material'
+import { CssBaseline, useMediaQuery } from '@mui/material'
 import { Suspense, createContext, useState } from 'react'
 
 export const ThemeModeContext = createContext({
@@ -9,7 +9,8 @@ export const ThemeModeContext = createContext({
 })
 
 export default function ContextProvider({ children }: { children?: JSX.Element | JSX.Element[] }): JSX.Element {
-  const [isDarkMode, setIsDarkMode] = useState(true)
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
+  const [isDarkMode, setIsDarkMode] = useState(prefersDarkMode)
 
   const toggleTheme = (): void => {
     setIsDarkMode(!isDarkMode)
