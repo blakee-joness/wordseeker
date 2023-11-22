@@ -10,7 +10,7 @@ export const ThemeModeContext = createContext({
 })
 
 const ReactQueryDevtoolsProduction = lazy(async () =>
-  // eslint-disable-next-line import/extensions
+  // eslint-disable-next-line import/extensions, import/no-extraneous-dependencies
   import('@tanstack/react-query-devtools/build/modern/production.js').then((d) => ({
     default: d.ReactQueryDevtools,
   }))
