@@ -43,7 +43,7 @@ export default function App(): JSX.Element {
         {wordList !== null && wordList.length > 0 ? (
           <>
             <Typography variant="caption">Last 5 seeks</Typography>
-            <ButtonGroup variant="text" color="secondary" fullWidth>
+            <ButtonGroup variant="contained" color="secondary" fullWidth>
               {wordList.map((w) => {
                 if (w === '') return <></>
                 return (
