@@ -1,13 +1,15 @@
-import { Grid } from '@mui/material'
+import { Box, Grid } from '@mui/material'
 
 export default function ContainerGrid({ children }: { children?: JSX.Element | JSX.Element[] }): JSX.Element {
   return (
-    <Grid container sx={{ my: 1 }} spacing={2}>
-      <Grid item xs={2} sm={3} />
-      <Grid item xs>
-        {children}
+    <Box sx={{ flexGrow: 1, m: 1 }}>
+      <Grid container>
+        <Grid item xs={0} md={4}></Grid>
+        <Grid item xs={12} md={4}>
+          {children}
+        </Grid>
+        <Grid item sm={0} md={4}></Grid>
       </Grid>
-      <Grid item xs={2} sm={3} />
-    </Grid>
+    </Box>
   )
 }

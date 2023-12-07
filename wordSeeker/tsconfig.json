@@ -21,7 +21,8 @@
       "@Components/*": ["Components/*"],
       "@Providers/*": ["Providers/*"],
       "@Theme/*": ["Theme/*"],
-      "@Pages/*": ["Pages/*"]
+      "@Pages/*": ["Pages/*"],
+      "@Api/*": ["Api/*"]
     },
     /* Linting */
     "strict": true,
