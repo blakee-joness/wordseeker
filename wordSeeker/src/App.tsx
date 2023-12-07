@@ -7,11 +7,17 @@ import Header from '@Components/Header'
 import ContainerGrid from '@Pages/ContainerGrid'
 import ContextProvider from '@Providers/ContextProvider'
 import DeleteIcon from '@mui/icons-material/Delete'
+import type { DictionaryResponse, WordNotFoundResponse } from '@Api/dictionaryapi/Client'
+import { dictionaryClient } from '@Api/dictionaryapi/Client'
+import type { AxiosError, AxiosResponse } from 'axios'
 
 export default function App(): JSX.Element {
   const [word, setWord] = useState<string | null>('')
+  const [isSuccess, setIsSuccess] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const searchHistory: string = localStorage.getItem('searchHistory') ?? ''
   const [history, setHistory] = useState<string[]>(searchHistory.split('|||'))
+  const [response, setResponse] = useState<DictionaryResponse | WordNotFoundResponse | undefined>(undefined)
   const wordRegex = /^[a-z]+$/
 
   function isValidWord(): boolean {
@@ -31,15 +37,28 @@ export default function App(): JSX.Element {
 
   const handleSearch = (): void => {
     if (word != null && !history.includes(word)) {
+      setIsLoading(true)
       if (isValidWord()) {
         // The word expected to be valid
         console.log(`VALID WORD:${word}`)
+        dictionaryClient
+          .get(`v2/entries/en/${word}`)
+          .then((r: AxiosResponse<DictionaryResponse>) => {
+            setResponse(r.data)
+            setIsSuccess(true)
+          })
+          .catch((e: AxiosError<WordNotFoundResponse>) => {
+            if (e.response?.status === 404) setResponse(e.response.data)
+            setIsSuccess(false)
+          })
         handleHistory()
       } else {
         // The word expected to be invalid
         console.log(`INVALID WORD: ${word}`)
       }
     }
+
+    setIsLoading(false)
   }
 
   const handleSpecialKeyPress = (e: React.KeyboardEvent<HTMLDivElement>): void => {
@@ -94,7 +113,9 @@ export default function App(): JSX.Element {
                       color="secondary"
                       sx={{ textOverflow: 'ellipsis', overflow: 'hidden' }}
                       key={w}
-                      onClick={() => setWord(w)}
+                      onClick={() => {
+                        setWord(w)
+                      }}
                       fullWidth
                     >
                       {formatWord(w)}
@@ -107,9 +128,12 @@ export default function App(): JSX.Element {
         ) : (
           <></>
         )}
+
+        {isLoading ? <Typography>Loading...</Typography> : <></>}
         {isValidWord() && history.includes(word ?? '') ? (
-          <Alert severity="success">
-            This is a word— check it out! <Typography>{word}</Typography>
+          <Alert variant={!isSuccess ? 'filled' : 'standard'} severity={!isSuccess ? 'error' : 'success'}>
+            {!isSuccess && <Typography>{word} not found!</Typography>}
+            <pre>{JSON.stringify(response, null, 2)}</pre>
           </Alert>
         ) : (
           <></>
