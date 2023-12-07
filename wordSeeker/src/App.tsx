@@ -15,7 +15,8 @@ export default function App(): JSX.Element {
   const wordRegex = /^[a-z]+$/
 
   function isValidWord(): boolean {
-    return wordRegex.test(word.trim().toLowerCase())
+    if (word != null) return wordRegex.test(word.trim().toLowerCase())
+    else return false
   }
 
   const handleHistory = (): void => {
