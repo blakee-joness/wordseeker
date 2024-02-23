@@ -48,5 +48,10 @@
     "jacoco.xml",
     "coverage.cobertura.xml",
     "cobertura-coverage.xml"
-  ]
+  ],
+  "[typescript][typescriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  }
 }
