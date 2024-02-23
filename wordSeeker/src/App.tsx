@@ -74,7 +74,6 @@ export default function App(): JSX.Element {
     if (longWord.length >= 15) return longWord.substring(0, 12) + '...'
     else return longWord
   }
-
   return (
     <ContextProvider>
       <Header />
@@ -132,7 +131,7 @@ export default function App(): JSX.Element {
         {isLoading ? <Typography>Loading...</Typography> : <></>}
         {isValidWord() && history.includes(word ?? '') ? (
           <Alert variant={!isSuccess ? 'filled' : 'standard'} severity={!isSuccess ? 'error' : 'success'}>
-            {!isSuccess && <Typography>{word} not found!</Typography>}
+            {!isSuccess && !isLoading && <Typography>{word} not found!</Typography>}
             <pre>{JSON.stringify(response, null, 2)}</pre>
           </Alert>
         ) : (
